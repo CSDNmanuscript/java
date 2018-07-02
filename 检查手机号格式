@@ -1,0 +1,35 @@
+package day07;
+
+import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+
+
+public class fdew {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		boolean q;
+		while(true){
+		Scanner sc=new Scanner(System.in);
+		String a=sc.next();
+		String b="((13[0-9])|(14[5|7])|(15[0-3]|[5-9])|(17[013678])|(18[0,5-9]))[\\d]{8}";
+		if(a.length()==11){
+			Pattern c=Pattern.compile(b);
+			Matcher m=c.matcher(a);
+			boolean i=m.matches();
+			if(i){
+				System.out.println(a+"的格式正确");
+			}else{
+				System.out.println("不存在此手机号码\n或者此号码已被注销");
+			}
+		}else{
+			System.out.println("格式错误\n请输入11位格式");
+		}
+	}
+	}
+}
