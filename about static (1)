@@ -1,0 +1,20 @@
+package gi;
+
+
+public class Gi {
+
+	static int a=0;
+	int b=3;
+	public Gi(int x){
+		this.b=x;
+	}
+	public static void main(String[] args) {
+		Gi o= new Gi(4);
+		Gi r= new Gi(7);
+		o.a=8;
+		System.out.println("o - a ="+o.a);
+		System.out.println("r - a ="+o.a);
+	}
+
+	
+}
