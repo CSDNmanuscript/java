@@ -1,0 +1,24 @@
+package day07;
+
+import java.util.Scanner;
+
+public class dwef {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		String a="Hello1212World1212";
+//		a=a.replaceAll("\\d+", "***");          /*  \\d+等价于\\d\\d\\d\\d\\d……一直等遇到字母     replaceAll是替换要替换的部分      */
+//		System.out.println(a);
+		String[] a={"你","东"};
+		Scanner sc=new Scanner(System.in);
+		String b=sc.next();
+		for(String oo:a){
+			b=b.replaceAll(oo, "**");
+		}
+		System.out.println(b);
+	}
+
+}
