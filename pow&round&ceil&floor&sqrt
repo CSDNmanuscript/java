@@ -1,0 +1,28 @@
+package s;
+
+import java.util.Scanner;
+
+public class fw {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		Scanner sc=new Scanner(System.in);
+		
+//		int max=Math.max(sc.nextInt(), sc.nextInt());
+		double a=Math.pow(3, 4);    //3的4次方
+		long b=Math.round(1.6);   //四舍五入
+		double c=Math.ceil(1.2);   //返回不小于它的最小整数
+		double d=Math.floor(1.2);  //返回不大于它的最大整数
+		double e=Math.sqrt(9);   //9的开方
+//		System.out.println(max);
+//		System.out.println(a);
+//		System.out.println(b);
+		System.out.println(c);
+		System.out.println(d);
+		System.out.println(e);
+	}
+
+}
