@@ -1,0 +1,28 @@
+package dew;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class Tianqiyubao {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws IOException{
+		URL a=new URL("https://www.sojson.com/open/api/weather/json.shtml?city=%E9%81%82%E5%AE%81");
+		HttpURLConnection b=(HttpURLConnection) a.openConnection();
+		InputStream c=b.getInputStream();
+		byte[] d=new byte[1024];
+		int e=0;
+		String s="";
+		while((e=c.read(d))!=-1){
+			s+=new String(d,0,e);
+		}
+		c.close();
+		b.disconnect();
+		System.out.println(new String(s.getBytes(),"utf8"));
+	}
+
+}
