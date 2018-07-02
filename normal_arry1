@@ -1,0 +1,21 @@
+package normal_array;
+
+public class arry01 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			
+			int[][]n1={
+					{1,2,3,9},
+					{4,5,6,9},
+					{7,8,9,9},
+			};
+			
+			for(int i=0;i<n1.length;i++){
+				for(int j=0;j<n1[i].length;j++){
+				System.out.print(n1[i][j]+" ");
+				}
+				System.out.println();
+			}
+	}
+}
