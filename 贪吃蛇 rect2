@@ -1,0 +1,45 @@
+package game;
+
+public class Rect {
+	int x;
+	int y;
+	int width;
+	int height;
+	
+	Rect(){
+	}
+	
+	Rect(int x, int y, int width, int height){
+		this.x = x;
+		this.y = y;
+		this.width = width ;
+		this.height = height;
+	}
+	
+	public void setLocation(int x1, int y1){
+		x = x1;
+		y = y1;
+	}
+	
+	public void setSize(int w, int h){
+		width = w;
+		height = h;
+	}
+	
+	public String toString(){//svn,git
+		return "x="+x+",y="+y+",width="+width+",height="+height;
+	}
+	
+	public boolean equals(Object obj){
+		if (this == obj) {
+		    return true;
+		}
+		if(obj instanceof Rect){
+			Rect r1 = (Rect)obj;
+			if(x == r1.x && y == r1.y){
+				return true;
+			}
+		}
+		return false;
+	}
+}
