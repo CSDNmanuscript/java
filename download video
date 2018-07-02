@@ -1,0 +1,34 @@
+package yt;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class video_download {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) throws IOException{
+		// TODO Auto-generated method stub
+		URL e=new URL("http://220.170.49.100/8/v/r/h/k/vrhkyyfegdbscvuhjhhubqlovhgmwp/hc.yinyuetai.com/704E014B87D112FB1F4D01D2D0BF96ED.flv?sc=e7424cb61812f7e3&br=767&vid=2240708&aid=122&area=US&vst=4");
+		HttpURLConnection r=(HttpURLConnection) e.openConnection();
+		InputStream u=r.getInputStream();
+		FileOutputStream i=new FileOutputStream("d:\\style.mp4");
+		byte[] t=new byte[1024];
+		int p=0;
+		while((p=u.read(t))!=-1){
+			i.write(t,0,p);
+		}
+		i.flush();
+		i.close();
+		System.out.println("this video download has been completed !");
+		u.close();
+		r.disconnect();
+		
+		
+	}
+
+}
