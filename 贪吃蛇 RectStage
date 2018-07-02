@@ -1,0 +1,57 @@
+package game;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Scanner;
+
+import javax.swing.JPanel;
+
+public class RectStage extends JPanel{
+	private static final long serialVersionUID = 1L;
+	
+	PaintableRect rect;
+	
+	RectStage(){//设置边长
+		this.setSize(500, 400);
+	}
+	
+	public void action(){//创造，绘制一个矩形,移动矩形
+		rect = new PaintableRect(20, 176, 240);
+		rect.setSize(50, 50);//设置边长
+		rect.setLocation(60, 80);
+		
+		Scanner scan =  new Scanner(System.in);
+		while(true){
+			String cmd = scan.nextLine().trim().toUpperCase();
+			if("A".equals(cmd)){
+				rect.x -= rect.width;
+			}else if("D".equals(cmd)){//a==-1  -1==a
+				rect.x += rect.width;
+			}else if("W".equals(cmd)){
+				rect.y -= rect.height;
+			}else if("S".equals(cmd)){
+				rect.y += rect.height;
+			}else if("0".equals(cmd)){
+				break;
+			}else{
+				System.out.println("输入命令无效！");
+			}
+			repaint();//重绘界面,需重写paint();
+		}
+		
+		
+		
+		repaint();//重绘界面,需重写paint();
+	}
+	
+	public void paint(Graphics g){
+		//绘制背景
+		g.setColor(new Color(35, 31, 32));
+		g.fillRect(0, 0, getWidth(), this.getHeight());
+		//绘制矩形
+		if(rect != null){//避免重绘时引起空指针异常
+			rect.paint(g);//调用rect的paint方法
+		}
+	}
+	
+}
