@@ -1,0 +1,27 @@
+package gi;
+
+public class So {
+
+	String name;
+	static int sum;
+	public So(String name){
+		this.name=name;
+		sum++;
+	}
+	public static void main(String[] args) {
+		So i= new So("tom");
+		mo(i);
+		So i1=new So("jack");
+		mo(i1);
+		So i2=new So("marry");
+		mo(i2);
+		So i3=new So("bob");
+		mo(i3);
+       System.out.println(So.sum);
+	}
+	public static void mo(So i){
+		System.out.println(i.name);
+		
+	}
+
+}
