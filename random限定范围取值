@@ -1,0 +1,20 @@
+package day01;
+
+import java.util.Random;
+
+public class djf {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+			Random r=new Random();
+			int s=Math.abs(r.nextInt()%27); /*  这里是[0,27)的取整  */                  //等价于    int s=r.nextInt(26);  这里是[0,26]的取整 
+			char a=(char)('A'+s);
+			System.out.println("random number\40"+s);
+			System.out.println(a);
+			
+	}
+
+}
