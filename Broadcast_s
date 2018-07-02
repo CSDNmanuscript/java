@@ -1,0 +1,30 @@
+package i0p;
+
+import java.io.IOException;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
+
+public class Broadcast_s {
+
+	/**
+	 * @param args
+	 * @throws InterruptedException 
+	 */
+	public static void main(String[] args) throws IOException, InterruptedException{
+		// TODO Auto-generated method stub
+		MulticastSocket a=new MulticastSocket(10);
+		byte[] b="UDP数据包".getBytes();
+		InetAddress group=InetAddress.getByName("224.0.0.6");
+		a.joinGroup(group);
+		DatagramPacket c=new DatagramPacket(b,b.length,group,6789);
+		for(int i=0;i<10;i++){
+			a.send(c);
+			System.out.println(i+1);
+			Thread.sleep(1000);
+		}
+		System.out.println("ok");
+	}
+		
+	}
+
