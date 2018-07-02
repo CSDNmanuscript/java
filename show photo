@@ -12,7 +12,7 @@ import javax.swing.JLabel;
 
 public class dj extends JFrame{
 
-    //此程序中到的3张图片在 CSDNmanuscript/java中（1.png、2.png、3.png）
+    //此程序中到的3张图片在 CSDNmanuscript/java中（1.jpg、2.jpg、3.jpg）
 		JLabel lk;
 		JComboBox box;
 		ImageIcon image;
