@@ -1,0 +1,29 @@
+package s2;
+
+
+
+public class zhishu {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int s=0;
+	for(int j=2;j<=1000;j++){
+		int i=2;
+		for(;i<j;i++){
+			if(j%i==0){
+				break;
+			}
+		}if(i>=j){
+				s++;
+				System.out.print(j+"\40");
+			}
+	}
+	
+		System.out.println();
+		System.out.println(s+"个");
+	}
+
+}
