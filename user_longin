@@ -1,0 +1,63 @@
+package monitor01;
+
+import java.awt.Button;
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Frame;
+import java.awt.Label;
+import java.awt.TextField;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class myframe extends Frame{
+		Button a =new Button("LOGIN");
+		Button b= new Button("RESET");
+		TextField io,oi;
+	public myframe(){
+		this.setTitle("welcome");
+		this.setSize(250,500);
+		this.setLayout(new FlowLayout());
+		
+		
+		
+		Label iu=new Label("USER:");
+		oi= new TextField("",15);
+		Label ui=new Label("CODE:");
+		io=new TextField("346649",15);
+		io.setEchoChar('*');
+		myListener mm= new myListener();
+		a.addActionListener(mm);
+		b.addActionListener(mm);
+		
+		this.add(iu);
+		this.add(oi);
+		this.add(ui);
+		this.add(io);
+		this.add(a);
+		this.add(b);
+		this.setVisible(true);
+	}
+	public static void main(String[] args) {
+		new myframe();
+
+	}
+	
+		
+
+	class myListener implements ActionListener{
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			if(e.getSource()==a){
+				setBackground(Color.magenta);
+				System.out.println("pink");
+			}else if(e.getSource()==b){
+				System.out.println(oi.getText()+","+io.getText());
+				oi.setText("");
+				io.setText("");
+			}
+		}
+		
+	}
+}
