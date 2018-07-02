@@ -1,0 +1,145 @@
+package Snake;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+import java.util.Random;
+import java.util.Timer;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class SnakeStage extends JPanel {
+	private static final long serialVersionUID = 1L;
+
+	public static final int CELL_SIZE = 20; // 节点的大小
+	public static final int CELL_COLS = 40; // 舞台单元格的列数
+	public static final int CELL_ROWS = 40; // 舞台单元格的行数
+
+	public static final int SNAKE_LEN = 6;
+
+	Cell food;
+	Snake snake;
+
+	Timer timer = new Timer();
+
+	SnakeStage() {
+		// 设置舞台大小
+		this.setSize(CELL_COLS * CELL_SIZE, CELL_ROWS * CELL_SIZE);
+	}
+
+	Cell randomFood() {
+		Random r = new Random();
+		int x;
+		int y;
+		do {
+			x = r.nextInt(CELL_COLS);
+			y = r.nextInt(CELL_ROWS);
+
+		} while (snake.contains(x, y));// 判断生成的食物是否和snake重叠
+
+		return new Cell(x, y);
+	}
+
+	public void action() {
+		snake = new Snake();
+		food = randomFood();
+		timer.schedule(new CreepTask(this), 0, 200);
+		this.requestFocus();// 请求当前绘图面板获取输入焦点
+		// 添加键盘事件监听器
+		this.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent e) {
+				int keyCode = e.getKeyCode();
+				switch (keyCode) {
+				case KeyEvent.VK_DOWN:
+					snake.changeDirection(Snake.DIRECTION_DOWN);
+					creepForFood();
+					break;
+				case KeyEvent.VK_UP:
+					snake.changeDirection(Snake.DIRECTION_UP);
+					creepForFood();
+					break;
+				case KeyEvent.VK_LEFT:
+					snake.changeDirection(Snake.DIRECTION_LEFT);
+					creepForFood();
+					break;
+				case KeyEvent.VK_RIGHT:
+					snake.changeDirection(Snake.DIRECTION_RIGHT);
+					creepForFood();
+					break;
+
+				}
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent e) {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+
+	}
+
+	/** 爬行方法，如果撞头就重写开始 */
+	public void creepForFood() {
+		if (snake.hit()) {
+			snake = new Snake();
+			food = randomFood();
+		} else {
+			boolean eat = snake.creep(food);
+			if (eat) {// 判断food是否被吃掉
+				food = randomFood();
+			}
+		}
+		repaint();
+	}
+	
+	@Override
+	public void paint(Graphics g) {
+		// 绘制背景
+		g.setColor(new Color(35, 31, 32));
+		g.fillRect(0, 0, getWidth(), getHeight());
+
+		if (snake != null) {
+			snake.paint(g, new Color(0, 176, 240), new Color(35, 31, 32));
+		}
+
+		if (food != null) {
+			// food.paint(g);
+			food.paint(g, new Color(255, 192, 0), new Color(35, 31, 32));
+		}
+	}
+
+	public static void main(String[] args) {
+		JFrame main = new JFrame();
+		main.setSize(850, 850);
+		main.setTitle("Snake Game");
+		main.setLocationRelativeTo(null);// 居中
+		main.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		main.setResizable(false);// 大小固定
+
+		main.setLayout(null);// 取消默认布局
+		SnakeStage ss = new SnakeStage();
+		main.setVisible(true);
+
+		int w = main.getContentPane().getWidth();
+		int h = main.getContentPane().getHeight();
+		ss.setLocation((w - ss.getWidth()) / 2, (h - ss.getHeight()) / 2);
+
+		main.getContentPane().add(ss);
+//		main.setVisible(true);
+		ss.action();
+	}
+
+}
