@@ -1,0 +1,17 @@
+package day01;
+
+public class day01_1 {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		
+		
+		System.out.println(Integer.MAX_VALUE);  //int类型的最大值
+		System.out.println(Integer.MIN_VALUE);  //int类型的最小值
+	}
+	
+	
+
+}
