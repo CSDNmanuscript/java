@@ -1,0 +1,44 @@
+package day01;
+
+import java.util.Random;
+
+public class a1 {
+	
+	public static void main(String[] args) {
+		Random r=new Random();
+//	int red1=r.nextInt(33);
+//	red1=Math.abs(r.nextInt()%33);
+//	
+//	int red2=r.nextInt(33);
+//	red2=Math.abs(r.nextInt()%33);
+//	
+//	int red3=r.nextInt(33);
+//	red3=Math.abs(r.nextInt()%33);
+//	
+//	int red4=r.nextInt(33);
+//	red4=Math.abs(r.nextInt()%33);
+//	
+//	int red5=r.nextInt(33);
+//	red5=Math.abs(r.nextInt()%33);
+	
+	int red6=r.nextInt(33);
+	System.out.print("six\40random\40red\40balls\40:\40");
+	for(int i=0;i<=5;i++){
+		red6=Math.abs(r.nextInt()%33);
+		System.out.print(red6+"\40");
+		
+	}
+	System.out.println();
+	
+	int blue=r.nextInt(17);
+	red6=Math.abs(r.nextInt()%17);
+//	System.out.println("six\40random\40red\40balls\40:\40"+red1+"\40"+red2+"\40"+red3+"\40"+red4+"\40"+red5+"\40"+red6);
+	System.out.println("one\40random\40blue\40ball\40:\40"+blue);
+	
+	}
+	
+	
+	
+	
+	
+}
