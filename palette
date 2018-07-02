@@ -1,0 +1,65 @@
+package monitor01;
+
+import java.awt.Color;
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JSlider;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+public class tiaosebian extends JFrame implements ChangeListener{
+			JLabel r,b,g,y;
+			JSlider r1,b1,g1;
+			int x,q,z;
+	
+	public  tiaosebian(){
+		this.setTitle("调色板");
+		this.setSize(270, 700);
+		this.setVisible(true);
+		this.setLayout(new FlowLayout());
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		r=new JLabel("red");
+		r1=new JSlider(0,255);
+		b=new JLabel("blue");
+		b1=new JSlider(0,255);
+		g=new JLabel("green");
+		g1=new JSlider(0,255);
+		y=new JLabel("___________________________");
+		
+		x=r1.getValue();
+		q=b1.getValue();
+		z=g1.getValue();
+		y.setOpaque(true);
+		y.setBackground(new Color(x,q,z));
+		
+		this.add(r);
+		this.add(r1);
+		this.add(b);
+		this.add(b1);
+		this.add(g);
+		this.add(g1);
+		this.add(y);
+		
+		r1.addChangeListener(this);
+		g1.addChangeListener(this);
+		b1.addChangeListener(this);
+		
+		
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			new tiaosebian();
+	}
+	public void stateChanged(ChangeEvent e) {
+		// TODO Auto-generated method stub
+		x=r1.getValue();
+		q=b1.getValue();
+		z=g1.getValue();
+		y.setBackground(new Color(x,q,z));
+	}
+
+	
+}
