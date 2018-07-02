@@ -1,0 +1,34 @@
+package de;
+
+public class hiu extends Thread{
+	int i;
+	String s;
+	
+	public hiu(String s,int i){
+		this.s=s;
+		this.i=i;
+	}
+	public void run(){
+		while(true){
+			
+		System.out.println("run........"+s);
+		try {
+			Thread.sleep(i);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+	}
+	
+	}
+	public static void main(String[] args) {
+		
+		hiu th=new hiu("n",800);
+		th.start();
+		
+		hiu th2=new hiu("j",400);
+		th2.start();
+		
+	}
+}
