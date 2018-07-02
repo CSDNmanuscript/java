@@ -1,0 +1,47 @@
+package Private;
+
+public class Time {
+
+	private int hour,minute,second;
+	
+	public int getHour() {
+		return hour;
+	}
+
+	public void setHour(int hour) {
+		if(hour>24||hour<0){
+			this.hour=404;
+		}else{
+			this.hour = hour;
+		}
+		
+	}
+
+	public int getMinute() {
+		return minute;
+	}
+
+	public void setMinute(int minute) {
+		this.minute = minute;
+	}
+
+	public int getSecond() {
+		return second;
+	}
+
+	public void setSecond(int second) {
+		this.second = second;
+	}
+
+	public static void main(String[] args) {
+		Time ii=new Time();
+		ii.setHour(5);
+		if(ii.getHour()==404){
+			System.out.println("ERROR .\nPLEASE TRY AGAIN  !");
+		}else{
+			System.out.println(ii.getHour());
+		}
+
+	}
+
+}
