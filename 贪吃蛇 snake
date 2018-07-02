@@ -1,0 +1,124 @@
+package Snake;
+
+import java.awt.Color;
+import java.awt.Graphics;
+import java.util.Arrays;
+
+public class Snake {
+	/** 方向-- 上下左右  */
+	public static final int DIRECTION_UP = 1;
+	public static final int DIRECTION_DOWN = -1;
+	public static final int DIRECTION_LEFT = 2;
+	public static final int DIRECTION_RIGHT = -2;
+	
+	/** 蛇的当前运动方法，初始状态默认向下移动 */
+	int currentDirection = DIRECTION_DOWN;
+	/** 节点数组 */
+	Cell[] cells;
+	
+	Snake(){
+		cells = new Cell[SnakeStage.SNAKE_LEN];//null
+		for(int i=0; i<cells.length; i++){
+			cells[i] = new Cell(2+i, 6);
+		}
+	}
+	
+	//碰撞检测
+	public boolean hit(int direction){
+		//增加边界判断
+		Cell nextHead = newHead(direction);
+		if(nextHead.getX()<0 || nextHead.getY()<0
+				|| nextHead.getX() >= SnakeStage.CELL_COLS
+				|| nextHead.getY() >= SnakeStage.CELL_ROWS){
+			return true;
+		}
+		//检测是否吃的自己 
+		if(this.contains(nextHead.getX(), nextHead.getY())){
+			return true;
+		}
+		return false;
+	}
+	
+	public boolean hit(){
+		return hit(currentDirection);
+	}
+	
+	/** 改变方向 */
+	public boolean changeDirection(int direction){
+		if(direction + currentDirection != 0){
+			currentDirection = direction;
+			return true;
+		}
+		return false;
+	}
+	
+	/** 检测当前snake身上是否包含x,y坐标节点 */
+	boolean contains(int x, int y){
+		for(int i=0; i<cells.length; i++){
+			if(x==cells[i].getX() && y==cells[i].getY()){
+				return true;
+				
+			}
+		}
+		return false;
+	}
+	
+	/** 爬行方法 */
+	public boolean creep(int direction, Cell food){
+		boolean eat = false;
+		if(direction+this.currentDirection != 0){//方向不能相反
+			this.currentDirection = direction;
+			Cell newHead =  newHead(direction);
+			//判断是否吃的食物
+			
+			if(newHead.getX()==food.getX()&&newHead.getY()==food.getY()){
+				cells=Arrays.copyOf(cells, cells.length+1);
+				
+			}
+			
+			if(newHead != null){
+				//移除末尾节点
+				for(int i=cells.length-1; i>=1; i--){
+					cells[i] = cells[i-1];
+				}
+				//插入新头节点
+				cells[0] = newHead;
+			}
+		}
+		return eat;
+	}
+	
+	public boolean creep(Cell food){
+		return creep(currentDirection, food);
+	}
+	
+	/** 创建新的头部 */
+	Cell newHead(int direction){
+		//根据运行方向创建将出现的新头节点实例
+		Cell newHead = null;
+		Cell head = cells[0];
+		switch(direction){
+		case DIRECTION_UP:
+			newHead = new Cell(head.getX(), head.getY()-1);
+			break;
+		case DIRECTION_DOWN:
+			newHead = new Cell(head.getX(), head.getY()+1);
+			break;
+		case DIRECTION_LEFT:
+			newHead = new Cell(head.getX()-1, head.getY());
+			break;
+		case DIRECTION_RIGHT:
+			newHead = new Cell(head.getX()+1, head.getY());
+			break;
+		}
+		
+		return newHead;
+	}
+	
+	void paint(Graphics g, Color c1, Color c2){
+		for(int i=0; i<cells.length; i++){
+			cells[i].paint(g, c1, c2);
+		}
+	}
+
+}
