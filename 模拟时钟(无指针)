@@ -1,0 +1,54 @@
+package gu;
+
+import java.awt.Frame;
+import java.awt.Graphics;
+import java.util.Calendar;
+
+
+public class Calendaro extends Frame implements Runnable{
+	Calendar o;
+	int h,s,m;
+	double h1,s1,m1;
+	public Calendaro(){
+		this.setTitle("f3rg");
+		this.setSize(500,500);
+		this.setVisible(true);
+		
+		Thread th=new Thread(this);
+		th.start();
+	}
+	
+	public void paint(Graphics g){
+
+		h1=(h+m/60.+s/3600.)*30-90;
+		m1=(m+s/60.)*6-90;
+		s1=s*6-90;
+		
+		g.drawOval(80, 50, 300, 300);
+		g.fillOval(228, 198, 4, 4);
+		g.drawString(h+":"+m+":"+s, 80, 60);
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		new Calendaro();
+	}
+	public void run() {
+		while(true){
+			
+			try {
+			o=Calendar.getInstance();
+			h=o.get(Calendar.HOUR);
+			s=o.get(Calendar.SECOND);
+			m=o.get(Calendar.MINUTE);
+			repaint();
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		
+	}
+
+}
