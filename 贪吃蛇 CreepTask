@@ -1,0 +1,21 @@
+package Snake;
+
+import java.util.TimerTask;
+
+
+public class CreepTask extends TimerTask{
+	/** 舞台对象的引用 */
+	SnakeStage snakeStage;
+	
+	/** 创建定时器时需要传入舞台对象 */
+	CreepTask(SnakeStage snakeStage){
+		this.snakeStage = snakeStage;
+	}
+
+	/** 实现定时器任务的执行方法run，驱动贪吃蛇的运行 */
+	@Override
+	public void run() {
+		snakeStage.creepForFood();
+	}
+
+}
