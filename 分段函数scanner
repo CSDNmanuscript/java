@@ -1,0 +1,28 @@
+package day01;
+
+import java.util.Scanner;
+
+public class fenduanhanshu {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int h;
+		int x=sc.nextInt();
+		if(x==0){
+			h=0;	
+			System.out.println("hl(x)函数\40=\40"+h);
+		}else if(x>0){
+			h=1;
+			System.out.println("hl(x)函数\40=\40"+h);
+		}else{
+			h=-1;
+			System.out.println("hl(x)函数\40=\40"+h);
+		}
+		
+		
+	}
+
+}
