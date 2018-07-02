@@ -1,0 +1,57 @@
+package po;
+
+import java.awt.FlowLayout;
+import java.awt.Image;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+
+public class dj extends JFrame{
+
+    //此程序中到的3张图片在 CSDNmanuscript/java中（1.png、2.png、3.png）
+		JLabel lk;
+		JComboBox box;
+		ImageIcon image;
+	public dj(){
+		this.setTitle("welcome");
+		this.setSize(1000,1000);
+		this.setLayout(new FlowLayout());
+		
+		
+		image=new ImageIcon("src/po/1.jpg");
+		lk= new JLabel(image);
+		
+		
+		
+		String[] r={"1.jpg","2.jpg","3.jpg"};
+		box=new JComboBox(r);
+		MyListener ji=new MyListener();
+		box.addItemListener(ji);
+	
+		this.add(lk);
+		this.add(box);
+		this.setVisible(true);
+	}
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		new dj();
+	}
+
+	class MyListener implements ItemListener{
+
+		public void itemStateChanged(ItemEvent arg0) {
+			String j=box.getSelectedItem().toString();
+			image = new ImageIcon("src/po/"+j);
+			image.setImage(image.getImage().getScaledInstance(500, 375, Image.SCALE_DEFAULT));
+			lk.setIcon(image);
+			
+		}
+		
+	}
+}
