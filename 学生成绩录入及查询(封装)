@@ -1,0 +1,239 @@
+package day04;
+
+import java.util.Scanner;
+
+public class gfetr {
+	private String name1,name2,name3,n;
+	private int score1,score2,score3;
+	
+	
+	
+	
+
+
+
+
+	private String getName1() {
+		return name1;
+	}
+
+
+
+
+
+
+
+
+	private void setName1(String name1) {
+		this.name1 = name1;
+	}
+
+
+
+
+
+
+
+
+	private String getName2() {
+		return name2;
+	}
+
+
+
+
+
+
+
+
+	private void setName2(String name2) {
+		this.name2 = name2;
+	}
+
+
+
+
+
+
+
+
+	private String getName3() {
+		return name3;
+	}
+
+
+
+
+
+
+
+
+	private void setName3(String name3) {
+		this.name3 = name3;
+	}
+
+
+
+
+
+
+
+
+	private String getN() {
+		return n;
+	}
+
+
+
+
+
+
+
+
+	private void setN(String n) {
+		this.n = n;
+	}
+
+
+
+
+
+
+
+
+	private int getScore1() {
+		return score1;
+	}
+
+
+
+
+
+
+
+
+	private void setScore1(int score1) {
+		this.score1 = score1;
+	}
+
+
+
+
+
+
+
+
+	private int getScore2() {
+		return score2;
+	}
+
+
+
+
+
+
+
+
+	private void setScore2(int score2) {
+		this.score2 = score2;
+	}
+
+
+
+
+
+
+
+
+	private int getScore3() {
+		return score3;
+	}
+
+
+
+
+
+
+
+
+	private void setScore3(int score3) {
+		this.score3 = score3;
+	}
+
+
+
+
+
+
+
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		gfetr as=new gfetr();
+		
+		System.out.println("\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\401.录入成绩 \n\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\402.成绩列表 \n\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\403.查询成绩 \n\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\40\400.退出");
+		for(int j=0;j<=3;j++){
+			Scanner sc=new Scanner(System.in);
+		int x=sc.nextInt();
+		
+		
+			switch (x) {
+			
+			case 1:
+				System.out.println("开始录入学生的成绩…………");
+				System.out.println("enter your name:");
+//				as.name1=sc.next();
+				as.setName1(sc.next());
+				System.out.println("enter your score:");
+//				as.score1=sc.nextInt();
+				as.setScore1(sc.nextInt());
+				System.out.println("enter your name:");
+//				as.name2=sc.next();
+				as.setName2(sc.next());
+				System.out.println("enter your score:");
+//				as.score2=sc.nextInt();
+				as.setScore2(sc.nextInt());
+				System.out.println("enter your name:");
+//				as.name3=sc.next();
+				as.setName3(sc.next());
+				System.out.println("enter your score:");
+//				as.score3=sc.nextInt();
+				as.setScore3(sc.nextInt());
+				System.out.println();
+				break;
+			case 2:
+				System.out.println("NO.1\40\40\40"+as.getName1()+"\40\40\40"+as.getScore1());
+				System.out.println("NO.2\40\40\40"+as.getName2()+"\40\40\40"+as.getScore2());
+				System.out.println("NO.3\40\40\40"+as.getName3()+"\40\40\40"+as.getScore3());
+				System.out.println();
+				break;
+			case 3:
+				System.out.println("please enter the name you want to reserch:");
+//				as.n=sc.next();
+				as.setN(sc.next());
+				if(as.getN().equals(as.getName1())){
+					System.out.println("NO.1\40\40\40"+as.getName1()+"\40\40\40"+as.getScore1());
+				}else if(as.getN().equals(as.getName2())){
+					System.out.println("NO.2\40\40\40"+as.getName2()+"\40\40\40"+as.getScore2());
+				}else if(as.getN().equals(as.getName3())){
+					System.out.println("NO.3\40\40\40"+as.getName3()+"\40\40\40"+as.getScore3());
+				}else{
+					System.out.println("——————————查无此人——————————");
+				}
+				System.out.println();
+				break;
+			case 0:
+				System.out.println("退出");
+				System.exit(x);
+				break;
+			}
+			
+	}
+		
+		
+		
+		
+	}
+
+}
