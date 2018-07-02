@@ -1,0 +1,36 @@
+package dd;
+
+import java.util.Scanner;
+
+public class Switch {
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int x=sc.nextInt();
+		String s=" ";
+		switch(x/10){
+		case 10:
+		case 9:
+			s="A";
+			break;
+		case 8:
+			s="B";
+			break;
+		case 7:
+			s="C";
+			break;
+		case 6:
+			s="D";
+			break;
+		case 5:
+			s="E";
+			break;
+	   }
+		System.out.println(s);
+	}
+}
+
+
