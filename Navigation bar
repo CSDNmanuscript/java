@@ -1,0 +1,126 @@
+package dd;
+
+import java.awt.Image;
+import java.awt.Menu;
+import java.awt.MenuBar;
+import java.awt.MenuItem;
+import java.awt.MenuShortcut;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
+
+import com.sun.glass.events.KeyEvent;
+
+public class Maino extends JFrame{
+
+	MenuItem o,oo,ooo,oooo,p,pp,ppp,pppp,ppppp,ow;
+	
+	JLabel ll;
+	ImageIcon image;
+	public Maino(){
+		this.setTitle("GUI");
+		this.setSize(700,700);
+		this.setVisible(true);
+		
+		MenuBar ii=new MenuBar();
+		Menu oi= new Menu("File");
+		 o=new MenuItem("New");
+		 MenuShortcut i=new MenuShortcut(KeyEvent.VK_X);   //快捷键设置：VK表示Ctrl键              VK_X表示Ctrl+X
+		 o.setShortcut(i);            //o调用快捷键设置 i
+		 oo=new MenuItem("Open File....");
+		 MenuShortcut R=new MenuShortcut(KeyEvent.VK_O); 
+		 image=new ImageIcon();
+		 ll =new JLabel(image);
+		 oo.setShortcut(R);
+		 ooo=new MenuItem("Save");
+		 MenuShortcut d=new MenuShortcut(KeyEvent.VK_S); 
+		 ooo.setShortcut(d);
+		 oooo=new MenuItem("Exit");
+		 MenuShortcut f=new MenuShortcut(KeyEvent.VK_Z); 
+		 oooo.setShortcut(f);
+		 
+		 Menu p1=new Menu("Edit");
+		 p=new MenuItem("Undo Tying");
+		 pp=new MenuItem("Redo");
+		 ppp=new MenuItem("Cut");
+		 pppp=new MenuItem("Select All");
+		 
+		 Menu op=new Menu("Help");
+		 ow=new MenuItem("HELP");
+		 MenuShortcut a=new MenuShortcut(KeyEvent.VK_A);
+		 ow.setShortcut(a);
+		 
+		 
+		 
+		 
+		 
+		oi.add(o);
+		oi.addSeparator();  //分割线
+		oi.add(oo);
+		oi.addSeparator();  //分割线
+		oi.add(ooo);
+		oi.addSeparator();  //分割线
+		oi.add(oooo);
+		ii.add(oi);
+		this.setMenuBar(ii);
+		this.add(ll);
+		p1.add(p);
+		p1.addSeparator();  //分割线
+		p1.add(pp);
+		p1.addSeparator();   //分割线
+		p1.add(ppp);
+		p1.addSeparator();  //分割线
+		p1.add(pppp);
+		op.add(ow);
+		ii.add(p1);
+		ii.add(op);
+		li mm=new li();
+		o.addActionListener(mm);
+		oo.addActionListener(mm);
+		ooo.addActionListener(mm);
+		oooo.addActionListener(mm);
+		ow.addActionListener(mm);
+	}
+	public static void main(String[] args) {
+		new Maino();
+	}
+	class li implements ActionListener{
+
+		public void actionPerformed(ActionEvent e) {
+			MenuItem p=(MenuItem)e.getSource();
+			if(p == o){
+				System.out.println("sure eidt any new ？");
+			}else if(p==oo){
+				System.out.println("sure open any file ？");
+				String[] tu={"jpg","png","bmp"};
+				FileNameExtensionFilter ftr=new FileNameExtensionFilter("JPG IMAGES",tu);
+				JFileChooser ss=new JFileChooser("d;\\");
+				ss.setFileFilter(ftr);
+				if(ss.showOpenDialog(null)==JFileChooser.APPROVE_OPTION);{
+					String path=ss.getSelectedFile().getAbsolutePath();
+					System.out.println("路径："+path);
+					image=new ImageIcon(path);
+					image.setImage(image.getImage().getScaledInstance(500, 375, Image.SCALE_DEFAULT));
+					ll.setIcon(image);
+				}
+				
+			}else if(p==ooo){
+				System.out.println("sure save ？");
+			}else if(p==oooo){
+				System.out.println("out");
+				System.exit(0);
+			}else if(p==ow){
+				String ipt=JOptionPane.showInputDialog(null);
+				System.out.println("input="+ipt);
+			}
+			
+		}
+		
+	}
+}
